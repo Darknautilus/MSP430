@@ -78,20 +78,22 @@
 
 \bigskip
 
-\paragraph{Question 1 ---}  La fonction lcd_init() écrit dans les registres LCDACTL, LCDAPCTL (0 et 1) et LCDMEM (1 à 20).
+\paragraph{Question 1 ---}  La fonction \verb|lcd_init()| écrit dans les registres LCDACTL, LCDAPCTL (0 et 1) et LCDMEM (1 à 20).
 
 \paragraph{Question 2 ---}  
 
 \paragraph{Question 3 ---}  D'après MSP430.pdf[750], tous les registres font 8 bits. D'après datasheet.pdf[16], les registres 8 bits de périphériques sont situés entre les adresses 0FFh et 010h.
 
 \paragraph{Question 4 ---}  Les plages d'adresses sont spécifiées à la même adresse :
-\includegraphics[height=4cm]{fig/plagesAdressage.pdf}
+%\begin{figure}
+\includegraphics[height=6cm]{fig/plagesAdressage.png}
+%\end{figure}
 
 \paragraph{Question 5 ---}  Dans Compiler.pdf[207], on peut voir qu'en C, l'opérateur @ permet de définir l'adresse à laquelle est stockée une variable. Ces deux lignes sont des déclarations de macros qui permettent de définir une variable à une adresse donnée. La seule différence est la taille de la zone mémoire : 16 bits pour DEFW, 8 bits pour DEFC.
 
-\paragraph{Question 6 ---}  Trouvé dans MSP430.pdf[750/736] : on voit que {f_LCD = 2 \times mux \times f_frame}, on cherche f_frame. On indique dans le code que l'on divise ACLK par 512 (bits 5,6 et 7 de LCDACTL à 1). f_LCD est donc égal à 32768 / 512 = 75,71 Hz. Donc f_frame = f_LCD / (2 * 4) = 9,46Hz, car mux = 4.
+\paragraph{Question 6 ---}  Trouvé dans MSP430.pdf[750/736] : on voit que \(f_{LCD} = 2 \times mux \times f_{frame}\), on cherche $f_{frame}$. On indique dans le code que l'on divise ACLK par 512 (bits 5,6 et 7 de LCDACTL à 1). $f_{LCD}$ est donc égal à 32768 / 512 = 75,71 Hz. Donc $f_{frame} = f_{LCD} / (2 * 4) = 9,46Hz$, car mux = 4.
 
-\paragraph{Question 7 ---}  Il nous faut changer les 3 derniers bits de LCDACTL. C'est à ça que sert la ligne 21 "(n<<5)", c'est à dire écrire n à partir du 5ème bit dans LCDACTL. Au lien de diviser ACLK par 512, on choisit de diviser par 128, ce qui donne une valeur pour f_frame de 32 Hz. L'écran ne scintille plus.
+\paragraph{Question 7 ---}  Il nous faut changer les 3 derniers bits de LCDACTL. C'est à ça que sert la ligne 21 "(n<<5)", c'est à dire écrire n à partir du 5ème bit dans LCDACTL. Au lien de diviser ACLK par 512, on choisit de diviser par 128, ce qui donne une valeur pour $f_{frame}$ de 32 Hz. L'écran ne scintille plus.
 
 \paragraph{Question 8 ---}  A la ligne LCDMEM[j] = 0xFF, on change 0xFF par 0 pour éteindre tous les segments.
 
@@ -102,5 +104,27 @@
 \paragraph{Question 11 ---}  Selon LCD.pdf[3], Dollar correspond à COM0 (P18) et à P26.
 
 \paragraph{Question 12 ---}  Selon CPU.pdf[19], la pin 26 de l'écran est reliée à la pin 37 du MSP430. COM0 est reliée à la pin 52 du MSP430.
+
+\paragraph{Question 13 ---}  Insérer code...
+
+\paragraph{Question 14 ---}  Insérer code...
+
+\paragraph{Question 15 ---}
+\begin{verbatim}
+// D'après Compiler.pdf[119], on met les 4 premiers paramètres de la fonction dans R12:R15, et le reste dans la pile
+// Cela est possible car chaque paramètre est codé sur 16 bits, alors il y a un registre par paramètre. Si les paramètres étaient plus larges, il faudrait deux registres par paramètre, et donc plus de paramètres dans la pile.
+0031E6    1230 0007          push.w  #0x7 // on ajoute le paramètre dans la pile
+0031EA    1230 0006          push.w  #0x6
+0031EE    1230 0005          push.w  #0x5
+0031F2    422F               mov.w   #0x4,R15 // on ajoute le paramètre dans un registre
+0031F4    403E 0003          mov.w   #0x3,R14
+0031F8    432D               mov.w   #0x2,R13
+0031FA    431C               mov.w   #0x1,R12
+0031FC    12B0 3182          call    #lcd_display_seven_digits // on appelle la sub-routine
+\end{verbatim}
+
+\paragraph{Question 17 ---}
+
+\paragraph{Question 18 ---}  Selon Compiler.pdf[196], n est un entier non signé, codé sur 16 bits.
 
 \end{document}
