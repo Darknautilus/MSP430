@@ -127,4 +127,14 @@
 
 \paragraph{Question 18 ---}  Selon Compiler.pdf[196], n est un entier non signé, codé sur 16 bits.
 
+\paragraph{Question 19 ---}  On n'utilise ici que des variables codées sur 16 bits. Le résultat attendu de la multiplication de 30 000 par 40 000 est 1 200 000 000 or, la valeur maximum codable sur 16 bits est 65 535, il y a donc un dépassement de capacité.
+
+\paragraph{Question 20 ---}  Le résultat de cette multiplication est codable sur 32 bits (valeur maximum : 4 294 967 295), on peut donc utiliser un \verb|unsigned long| (toujours selon Compiler.pdf[196])
+
+\paragraph{Question 21 ---}  En remplacant au moins l'un des opérandes en \verb|unsigned long| pour le coder sur 32 bits, la valeur calculée est correcte. Il est intéressant de voir comment le compilateur gère ces grands nombres en les stockant dans deux registres 16 bits, et en effectuant de ce fait beaucoup plus d'opérations (copies, effacements, etc.)
+
+\paragraph{Question 22 --}  On choisit d'utiliser le type \verb|uint16_t| pour n afin d'avoir des valeurs assez grandes, mais on peut noter que le choix du type permet également de choisir la valeur maximale du tirage au sort : 65535 pour \verb|uint16_t| et 255 pour \verb|uint8_t|.
+
+
+
 \end{document}
