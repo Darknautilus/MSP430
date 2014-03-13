@@ -47,8 +47,8 @@ void lcd_display_number( unsigned int number )
 {
   lcd_clear();
   if( number == 0 )
-    lcd_display_digit( 0, 0);
-  int i = 0;
+    lcd_display_digit(1,0);
+  int i = 1;
   while(number)
   {
     lcd_display_digit(i,number%10);
@@ -68,7 +68,52 @@ void lcd_clear()
 
 void lcd_display_digit(int pos, int digit)
 {
-  
+  int octet = pos + 1;
+  switch(digit)
+  {
+  case 0:
+    LCDMEM[octet] = 0x5F;
+    break;
+  case 1:
+    LCDMEM[octet] = 0x06;
+    break;
+  case 2:
+    LCDMEM[octet] = 0x6B;
+    break;
+  case 3:
+    LCDMEM[octet] = 0x2F;
+    break;
+  case 4:
+    LCDMEM[octet] = 0x36;
+    break;
+  case 5:
+    LCDMEM[octet] = 0x3D;
+    break;
+  case 6:
+    LCDMEM[octet] = 0x7D;
+    break;
+  case 7:
+    LCDMEM[octet] = 0x07;
+    break;
+  case 8:
+    LCDMEM[octet] = 0x7F;
+    break;
+  case 9:
+    LCDMEM[octet] = 0x3F;
+    break;
+  }
+}
+
+void lcd_display_seven_digits(int a, int b, int c, int d, int e, int f, int g)
+{
+  lcd_display_digit(1,a);
+  lcd_display_digit(2,b);
+  lcd_display_digit(3,c);
+
+  lcd_display_digit(4,d);
+  lcd_display_digit(5,e);
+  lcd_display_digit(6,f);
+  lcd_display_digit(7,g);
 }
 
 void display_dollar()

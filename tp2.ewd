@@ -223,7 +223,7 @@
         </option>
         <option>
           <name>UsbComPort</name>
-          <state>COM7</state>
+          <state>COM14</state>
         </option>
         <option>
           <name>FetConnection</name>
