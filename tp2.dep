@@ -6,28 +6,63 @@
   <configuration>
     <name>Debug</name>
     <outputs>
-      <file>$TOOLKIT_DIR$\inc\msp430fg4618.h</file>
-      <file>$PROJ_DIR$\Debug\Obj\lcd.r43</file>
       <file>$PROJ_DIR$\Debug\Obj\main.pbi</file>
-      <file>$PROJ_DIR$\lcd.c</file>
       <file>$PROJ_DIR$\Debug\Obj\main.r43</file>
+      <file>$TOOLKIT_DIR$\config\lnk430FG4618.xcl</file>
+      <file>$TOOLKIT_DIR$\inc\msp430fg4618.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\tp2.pbd</file>
+      <file>$PROJ_DIR$\Debug\Exe\tp2.d43</file>
+      <file>$TOOLKIT_DIR$\inc\in430.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\lcd.pbi</file>
+      <file>$TOOLKIT_DIR$\inc\intrinsics.h</file>
       <file>$PROJ_DIR$\lcd.h</file>
       <file>$PROJ_DIR$\main.c</file>
-      <file>$TOOLKIT_DIR$\inc\in430.h</file>
-      <file>$TOOLKIT_DIR$\config\multiplier.xcl</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\c\xencoding_limits.h</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\c\stdint.h</file>
+      <file>$TOOLKIT_DIR$\lib\dlib\dl430fn.h</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Defaults.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\lcd.r43</file>
       <file>$TOOLKIT_DIR$\lib\dlib\dl430fn.r43</file>
-      <file>$TOOLKIT_DIR$\inc\intrinsics.h</file>
-      <file>$PROJ_DIR$\Debug\Obj\lcd.pbi</file>
-      <file>$PROJ_DIR$\Debug\Exe\tp2.d43</file>
-      <file>$PROJ_DIR$\Debug\Obj\tp2.pbd</file>
-      <file>$TOOLKIT_DIR$\config\lnk430FG4618.xcl</file>
+      <file>$TOOLKIT_DIR$\config\multiplier.xcl</file>
+      <file>$PROJ_DIR$\lcd.c</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Product.h</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\c\ycheck.h</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Threads.h</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\c\yvals.h</file>
     </outputs>
     <file>
-      <name>$PROJ_DIR$\lcd.c</name>
+      <name>$PROJ_DIR$\Debug\Obj\tp2.pbd</name>
+      <inputs>
+        <tool>
+          <name>BILINK</name>
+          <file> 7 0</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Debug\Exe\tp2.d43</name>
+      <inputs>
+        <tool>
+          <name>XLINK</name>
+          <file> 2 17 15 1 16</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\..\[ROOT_NODE]</name>
+      <outputs>
+        <tool>
+          <name>XLINK</name>
+          <file> 5</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\main.c</name>
       <outputs>
         <tool>
           <name>BICOMP</name>
-          <file> 11</file>
+          <file> 0</file>
         </tool>
         <tool>
           <name>ICC430</name>
@@ -37,63 +72,36 @@
       <inputs>
         <tool>
           <name>BICOMP</name>
-          <file> 5 0 7 10</file>
+          <file> 3 6 8 9 12 20 22 14 19 11 21</file>
         </tool>
         <tool>
           <name>ICC430</name>
-          <file> 5 0 7 10</file>
+          <file> 3 6 8 9 12 20 22 14 13 19 11 21</file>
         </tool>
       </inputs>
     </file>
     <file>
-      <name>$PROJ_DIR$\main.c</name>
+      <name>$PROJ_DIR$\lcd.c</name>
       <outputs>
         <tool>
           <name>BICOMP</name>
-          <file> 2</file>
+          <file> 7</file>
         </tool>
         <tool>
           <name>ICC430</name>
-          <file> 4</file>
+          <file> 15</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>BICOMP</name>
-          <file> 0 7 10 5</file>
+          <file> 9 3 6 8</file>
         </tool>
         <tool>
           <name>ICC430</name>
-          <file> 0 7 10 5</file>
+          <file> 9 3 6 8</file>
         </tool>
       </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\Debug\Exe\tp2.d43</name>
-      <inputs>
-        <tool>
-          <name>XLINK</name>
-          <file> 14 8 1 4 9</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\Debug\Obj\tp2.pbd</name>
-      <inputs>
-        <tool>
-          <name>BILINK</name>
-          <file> 11 2</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>[ROOT_NODE]</name>
-      <outputs>
-        <tool>
-          <name>XLINK</name>
-          <file> 12</file>
-        </tool>
-      </outputs>
     </file>
   </configuration>
   <configuration>

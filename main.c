@@ -1,6 +1,7 @@
 
 #include "msp430fg4618.h"
 #include "lcd.h"
+#include <stdint.h>
 
 void startCompteur()
 {
@@ -21,7 +22,7 @@ void startCompteur()
 
 unsigned int alea()
 {
-  static unsigned int n =1;
+  static uint16_t n =1;
   
   n = n * 3 + 5 ;
   return n;
@@ -31,7 +32,7 @@ unsigned int alea()
 void tirage ()
 {
   volatile int i = 0;
-  int n;
+  unsigned int n;
   for(;;)
   {
     if(P1IN==0x01)
@@ -44,7 +45,13 @@ void tirage ()
   }
 }
       
-  
+void question19()
+{
+  unsigned long a = 30000;
+  unsigned int b = 40000;
+  unsigned long c = a*b;
+  lcd_display_number(c);
+}
 
 int main( void )
 {
@@ -62,7 +69,7 @@ int main( void )
   
   tirage();
 
-      
+  //question19();  
     
   return 0;
 }
