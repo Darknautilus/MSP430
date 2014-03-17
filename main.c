@@ -24,7 +24,7 @@ unsigned int alea()
 {
   static uint16_t n =1;
   
-  n = n * 3 + 5 ;
+  n = n * 500 + 400 ;
   return n;
 }
   

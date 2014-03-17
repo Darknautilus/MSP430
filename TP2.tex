@@ -135,6 +135,14 @@
 
 \paragraph{Question 22 --}  On choisit d'utiliser le type \verb|uint16_t| pour n afin d'avoir des valeurs assez grandes, mais on peut noter que le choix du type permet également de choisir la valeur maximale du tirage au sort : 65535 pour \verb|uint16_t| et 255 pour \verb|uint8_t|.
 
-
+\begin{verbatim}
+alea:
+ 003246    421F 1100          mov.w   &n,R15
+ 00324A    4F0E               mov.w   R15,R14
+ 00324C    5F0F               rla.w   R15
+ 00324E    5E0F               add.w   R14,R15
+ 003250    503F 0005          add.w   #0x5,R15
+ 003254    4F82 1100          mov.w   R15,&n
+\end{verbatim}
 
 \end{document}
