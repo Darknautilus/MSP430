@@ -133,16 +133,20 @@
 
 \paragraph{Question 21 ---}  En remplacant au moins l'un des opérandes en \verb|unsigned long| pour le coder sur 32 bits, la valeur calculée est correcte. Il est intéressant de voir comment le compilateur gère ces grands nombres en les stockant dans deux registres 16 bits, et en effectuant de ce fait beaucoup plus d'opérations (copies, effacements, etc.)
 
-\paragraph{Question 22 --}  On choisit d'utiliser le type \verb|uint16_t| pour n afin d'avoir des valeurs assez grandes, mais on peut noter que le choix du type permet également de choisir la valeur maximale du tirage au sort : 65535 pour \verb|uint16_t| et 255 pour \verb|uint8_t|.
+\paragraph{Question 22 ---}  On choisit d'utiliser le type \verb|uint16_t| pour n afin d'avoir des valeurs assez grandes, mais on peut noter que le choix du type permet également de choisir la valeur maximale du tirage au sort : 65535 pour \verb|uint16_t| et 255 pour \verb|uint8_t|.
+
+\paragraph{Question 23 ---}  Lorsqu'on veut faire une multiplication par un petit nombre, le compilateur s'arrange pour simplifier la multiplication, c'est à dire éviter de faire plusieurs add à la suite. On le voit dans ce code lors d'une multiplication par 3 :
 
 \begin{verbatim}
 alea:
- 003246    421F 1100          mov.w   &n,R15
+ 003246    421F 1100          mov.w   &n,R15 # Récupération de la variable en zone statique
  00324A    4F0E               mov.w   R15,R14
- 00324C    5F0F               rla.w   R15
- 00324E    5E0F               add.w   R14,R15
- 003250    503F 0005          add.w   #0x5,R15
- 003254    4F82 1100          mov.w   R15,&n
+ 00324C    5F0F               rla.w   R15 # Rotation à gauche : multiplication par deux
+ 00324E    5E0F               add.w   R14,R15 # on ajoute encore n à lui-même => multiplication par 3
+ 003250    503F 0005          add.w   #0x5,R15 # on ajoute encore 5 à n
+ 003254    4F82 1100          mov.w   R15,&n # et on stocke la nouvelle valeur de n en zone statique
 \end{verbatim}
+
+
 
 \end{document}
