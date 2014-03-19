@@ -147,6 +147,23 @@ alea:
  003254    4F82 1100          mov.w   R15,&n # et on stocke la nouvelle valeur de n en zone statique
 \end{verbatim}
 
+D'après MSP430.pdf[351], on utilise ici un multiplieur matériel 16 bits. Ce multiplieur possède deux registres pour les opérandes et un registre pour les résultats. En pratique, il y a plusieurs registres suivant le paramétrage de la multiplication, mais ici on fait une multiplication simple.
 
+\begin{verbatim}
+alea:
+ 00320A    1202               push.w  SR
+ 00320C    C232               dint
+ 00320E    4303               nop
+ 003210    4292 1100 0130     mov.w   &n,&0x130 # on copie le premier opérande (n) dans un registre du multiplieur
+ 003216    40B2 01F4 0138     mov.w   #0x1F4,&0x138 # on copie le second opérande (500)
+ 00321C    421F 013A          mov.w   &0x13A,R15 # on récupère le résultat de la multiplication depuis un registre du multiplieur.
+ 003220    4132               pop.w   SR
+ 003222    503F 0190          add.w   #0x190,R15
+ 003226    4F82 1100          mov.w   R15,&n
+\end{verbatim}
+
+\paragraph{Question 24 ---}
+
+\paragraph{Question 29 ---}
 
 \end{document}
