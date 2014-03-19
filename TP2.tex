@@ -145,4 +145,16 @@ alea:
  003254    4F82 1100          mov.w   R15,&n
 \end{verbatim}
 
+\begin{verbatim}
+alea:
+ 00320A    1202               push.w  SR
+ 00320C    C232               dint
+ 00320E    4303               nop
+ 003210    4292 1100 0130     mov.w   &n,&0x130
+ 003216    40B2 01F4 0138     mov.w   #0x1F4,&0x138
+ 00321C    421F 013A          mov.w   &0x13A,R15
+ 003220    4132               pop.w   SR
+ 003222    503F 0190          add.w   #0x190,R15
+ 003226    4F82 1100          mov.w   R15,&n
+\end{verbatim}
 \end{document}
