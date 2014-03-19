@@ -20,6 +20,11 @@ void startCompteur()
   }
 }
 
+uint16_t mul(uint16_t x, uint16_t y)
+{
+  return x*y;
+}
+
 unsigned int alea()
 {
   static uint16_t n =1;
