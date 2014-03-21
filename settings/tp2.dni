@@ -1,7 +1,8 @@
 [DebugChecksum]
-Checksum=1482107169
+Checksum=1939949396
 [DisAssemblyWindow]
-NumStates=_ 0
+NumStates=_ 1
+State 1=_ 1
 [InstructionProfiling]
 Enabled=_ 0
 [CodeCoverage]
@@ -16,25 +17,6 @@ UseTrigger=1
 TriggerName=main
 LimitSize=0
 ByteLimit=50
-[InterruptLog]
-LogEnabled=0
-SumEnabled=0
-GraphEnabled=0
-ShowTimeLog=1
-ShowTimeSum=1
-SumSortOrder=0
-[Interrupts]
-Enabled=1
-[MemoryMap]
-Enabled=0
-Base=0
-UseAuto=0
-TypeViolation=1
-UnspecRange=1
-ActionState=1
-[TraceHelper]
-Enabled=0
-ShowSource=1
 [State Storage]
 Control Register=771
 [Sequencer]
@@ -44,15 +26,12 @@ NextState1=0
 [Action Register]
 Break=1
 State Storage=0
-[Breakpoints]
-Bp0=_ "STD_CODE" "Memory:0x3226" 0 0 0 0 "" 0 ""
-Count=1
 [FET]
 Clock mode=14
 Extended Clock mode=-1
 Secure Password=
 Extended Clock Control Enable=1
-Advanced Extended Clock Control=1
+Advanced Extended Clock Control=0
 Emulation mode=0
 Free running=0
 Shutting Down=3
@@ -74,13 +53,35 @@ Category=_ 0
 [TermIOLog]
 LoggingEnabled=_ 0
 LogFile=_ ""
-[Aliases]
-Count=0
-SuppressDialog=0
 [CallStackLog]
 Enabled=0
 [DriverProfiling]
 Enabled=0
-Mode=147794576
+Mode=1
 Graph=0
 Symbiont=0
+[InterruptLog]
+LogEnabled=0
+SumEnabled=0
+GraphEnabled=0
+ShowTimeLog=1
+ShowTimeSum=1
+SumSortOrder=0
+[Breakpoints]
+Bp0=_ "STD_CODE" "Memory:0x3226" 0 0 0 0 "" 0 ""
+Count=1
+[Interrupts]
+Enabled=1
+[MemoryMap]
+Enabled=0
+Base=0
+UseAuto=0
+TypeViolation=1
+UnspecRange=1
+ActionState=1
+[Aliases]
+Count=0
+SuppressDialog=0
+[TraceHelper]
+Enabled=0
+ShowSource=1

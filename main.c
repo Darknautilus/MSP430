@@ -20,10 +20,10 @@ void startCompteur()
   }
 }
 
-uint16_t mul(uint16_t x, uint16_t y)
-{
-  ;//return x*y;
-}
+uint16_t mul(uint16_t x, uint16_t y);
+//{
+//  return x*y;
+//}
 
 unsigned int alea()
 {
@@ -78,7 +78,7 @@ int main( void )
   
   //question19();  
   
-  mul(42,170);
+  uint16_t ret = mul(42,170);
     
   return 0;
 }
