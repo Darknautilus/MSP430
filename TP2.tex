@@ -147,7 +147,7 @@ alea:
  003254    4F82 1100          mov.w   R15,&n # et on stocke la nouvelle valeur de n en zone statique
 \end{verbatim}
 
-D'aprÃ¨s MSP430.pdf[351], on utilise ici un multiplieur matÃ©riel 16 bits. Ce multiplieur possÃ¨de deux registres pour les opÃ©randes et un registre pour les rÃ©sultats. En pratique, il y a plusieurs registres suivant le paramÃ©trage de la multiplication, mais ici on fait une multiplication simple.
+D'aprÃ¨s MSP430.pdf[351], on utilise ici un multiplieur matÃ©riel 32 bits. Ce multiplieur possÃ¨de deux registres pour les opÃ©randes et un registre pour les rÃ©sultats. En pratique, il y a plusieurs registres suivant le paramÃ©trage de la multiplication, mais ici on fait une multiplication simple.
 
 \begin{verbatim}
 alea:
@@ -162,8 +162,66 @@ alea:
  003226    4F82 1100          mov.w   R15,&n
 \end{verbatim}
 
-\paragraph{Question 24 ---}
+\paragraph{Question 24 ---}Le premier registre opérande de notre multiplieur OP1 est en vrai constitué de 12 registres et le second registre opérande de 3 registres. Dans le code assembleur de la question précédente l'adresse 0x130 dans laquelle on place le premier opérande correspond au registre nommé MPY (pour les multiplication nons signé de nombre de 0 à 16 bits);l'adresse 0x138, elle correspond au registre nommé OP2. L'adresse 0x13A d'où on va récupérer le résultat de la multiplication correspond à l'adresse du registre nommé RESLO.
 
-\paragraph{Question 29 ---}
+\paragraph{Question 25 ---}bug, impossibilité de faire pas à pas. Entre dans la fonction alea() puis passe directement au return.
 
+\paragraph{Question 26 ---}
+
+option direct access, library calls, "pas du tout" : 
+\begin{verbatim}
+alea:
+ 00311E    421F 1100          mov.w   &n,R15
+ 003122    065F               rlam.w  #2,R15
+ 003124    4F0E               mov.w   R15,R14
+ 003126    065F               rlam.w  #2,R15
+ 003128    5F0E               add.w   R15,R14
+ 00312A    5F0F               rla.w   R15
+ 00312C    5F0E               add.w   R15,R14
+ 00312E    5F0F               rla.w   R15
+ 003130    5F0E               add.w   R15,R14
+ 003132    5F0F               rla.w   R15
+ 003134    5F0E               add.w   R15,R14
+ 003136    5F0F               rla.w   R15
+ 003138    5E0F               add.w   R14,R15
+ 00313A    503F 0190          add.w   #0x190,R15
+ 00313E    4F82 1100          mov.w   R15,&n
+\end{verbatim}
+Aucune distinction de cas
+
+\paragraph{Question 27 ---}
+
+- option direct access :
+\begin{verbatim}
+mul:
+ 00314A    1202               push.w  SR
+ 00314C    C232               dint
+ 00314E    4303               nop
+ 003150    4C82 0130          mov.w   R12,&MPY
+ 003154    4D82 0138          mov.w   R13,&OP2
+ 003158    421C 013A          mov.w   &RESLO,R12
+ 00315C    4132               pop.w   SR
+ 00315E    0110               reta
+\end{verbatim}
+ execution en 19 cycles
+
+ -option library calls :
+\begin{verbatim}
+mul:
+ 003190    4D0E               mov.w   R13,R14
+ 003192    0080 3130          bra     #0x3130
+\end{verbatim} 
+26 cycles
+
+-option "pas du tout" :
+\begin{verbatim}
+mul:
+ 0031A4    4D0E               mov.w   R13,R14
+ 0031A6    0080 3110          bra     #0x3110
+\end{verbatim}
+63 cycles
+
+\paragraph{Question 28 ---} En vue des résultats, la meilleur solution de compilation en terme de temps d'execution est celle de l'acces direct au multiplieur.
+
+\paragraph{Question 29 ---} mul retourne reta
 \end{document}

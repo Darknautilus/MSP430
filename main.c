@@ -22,7 +22,7 @@ void startCompteur()
 
 uint16_t mul(uint16_t x, uint16_t y)
 {
-  return x*y;
+  ;//return x*y;
 }
 
 unsigned int alea()
@@ -72,9 +72,13 @@ int main( void )
   
   //lcd_display_seven_digits(1,2,3,4,5,6,7);
   
-  tirage();
+  //tirage();
 
+  //alea();
+  
   //question19();  
+  
+  mul(42,170);
     
   return 0;
 }
